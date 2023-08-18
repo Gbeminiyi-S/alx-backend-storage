@@ -1,2 +1,2 @@
 // Lists all documents with `name` starting by `Holberton` in the collection `school`
-collection.find({"name": {"$regex": f"^{Holberton}"})
+db.school.find({"name": {"$regex": f"^{Holberton}"})
