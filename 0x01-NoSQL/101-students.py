@@ -7,9 +7,9 @@ def top_students(mongo_collection):
     mapped_students = mongo_collection.aggregate([
         {
             "$project": {
-                "_id": "$_id",
-                "name": "$name",
-                "averageScore": {"$avg": "$score"}
+                "_id": "_id",
+                "name": "name",
+                "averageScore": {"$avg": "score"}
             }
         },
         {
