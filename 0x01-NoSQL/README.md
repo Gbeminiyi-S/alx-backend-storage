@@ -71,9 +71,22 @@ An introductory project on:
     WriteResult({ "nInserted" : 1 })
     bye
     guillaume@ubuntu:~/0x01$
-    ``` 
+    ```
+
+4. [3-all](./3-all) - a script that lists all documents in the collection `school`:
+      
+    **Execution Example**:
+   ```
+   guillaume@ubuntu:~/0x01$ cat 3-all | mongo my_db
+   MongoDB shell version v3.6.3
+   connecting to: mongodb://127.0.0.1:27017/my_db
+   MongoDB server version: 3.6.3
+   { "_id" : ObjectId("5a8fad532b69437b63252406"), "name" : "Holberton school" }
+   bye
+   guillaume@ubuntu:~/0x01$
+   ```
   
-4. [4-match](./4-match) - a script that lists all documents with `name="Holberton school"` in the collection `school`:
+5. [4-match](./4-match) - a script that lists all documents with `name="Holberton school"` in the collection `school`:
    
    **Execution Example**:
    ```
@@ -86,7 +99,7 @@ An introductory project on:
    guillaume@ubuntu:~/0x01$
    ```
 
-5. [5-count](./5-count) - a script that displays the number of documents in the collection `school`:
+6. [5-count](./5-count) - a script that displays the number of documents in the collection `school`:
    
    **Execution Example**:
    ```
@@ -99,7 +112,7 @@ An introductory project on:
    guillaume@ubuntu:~/0x01$
    ```
 
-6. [6-update](./6-update) - a script that adds a new attribute to a document in the collection `school`:
+7. [6-update](./6-update) - a script that adds a new attribute to a document in the collection `school`:
    - The script should update only document with `name="Holberton school"` (all of them)
    - The update should add the attribute `address` with the value “972 Mission street”
    
@@ -121,7 +134,7 @@ An introductory project on:
    guillaume@ubuntu:~/0x01$ 
    ```
 
-7. [7-delete](./7-delete) - a script that deletes all documents with `name="Holberton school"` in the collection `school`:
+8. [7-delete](./7-delete) - a script that deletes all documents with `name="Holberton school"` in the collection `school`:
 
    **Execution Example**:
    ```
@@ -138,6 +151,33 @@ An introductory project on:
    MongoDB server version: 3.6.3
    bye
    guillaume@ubuntu:~/0x01$
+   ```
+
+9. [8-all.py](./8-all.py) - a Python function that lists all documents in a collection:
+   - Prototype: def `list_all(mongo_collection):`
+   - Return an empty list if no document in the collection
+   - `mongo_collection` will be the `pymongo` collection object
+
+   **Execution Example**:
+   ```
+   guillaume@ubuntu:~/0x01$ cat 8-main.py
+   #!/usr/bin/env python3
+   """ 8-main """
+   from pymongo import MongoClient
+   list_all = __import__('8-all').list_all
+   
+   if __name__ == "__main__":
+       client = MongoClient('mongodb://127.0.0.1:27017')
+       school_collection = client.my_db.school
+       schools = list_all(school_collection)
+       for school in schools:
+           print("[{}] {}".format(school.get('_id'), school.get('name')))
+   
+   guillaume@ubuntu:~/0x01$ 
+   guillaume@ubuntu:~/0x01$ ./8-main.py
+   [5a8f60cfd4321e1403ba7ab9] Holberton school
+   [5a8f60cfd4321e1403ba7aba] UCSD
+   guillaume@ubuntu:~/0x01$ 
    ```
    
 ### Advanced
