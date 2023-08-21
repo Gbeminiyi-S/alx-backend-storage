@@ -21,7 +21,7 @@ if __name__ == "__main__":
     get_status_count = col.count_documents({'method': 'GET',
                                             'path': '/status'})
 
-    print(f"{get_status_count} status check")
+    print(f"{get_status_count} status check\nIPs:")
 
     # adding the top 10 of the most present IPs
     group_stage = {
