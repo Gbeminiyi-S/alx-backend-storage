@@ -21,4 +21,4 @@ def top_students(mongo_collection):
         project_stage, sort_stage
         ])
 
-    return aggregated_students
+    return aggregated_students.
