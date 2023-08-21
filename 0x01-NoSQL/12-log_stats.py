@@ -9,8 +9,7 @@ if __name__ == "__main__":
 
     logs_count = col.count_documents({})
 
-    print(f"{logs_count} logs")
-    print("Methods:")
+    print(f"{logs_count} logs\nMethods:")
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
