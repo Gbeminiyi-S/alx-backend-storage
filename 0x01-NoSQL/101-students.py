@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
-"""This modules defines a function `top_students`"""
+"""This module defines a function `top_students`"""
 
 
 def top_students(mongo_collection):
     """Returns all students sorted by average score"""
-    mapped_students = mongo_collection.aggregate([
-        {
+
+    project_stage = {
             "$project": {
                 "_id": "$_id",
                 "name": "$name",
                 "averageScore": {"$avg": "$topics.score"}
+                }
             }
-        },
-        {
-            "$sort": {"averageScore": -1}
-        }
-    ])
 
-    return mapped_students
+    sort_stage = {
+            "$sort": {"averageScore": -1}
+            }
+
+    aggregated_students = mongo_collection.aggregate([
+        project_stage, sort_stage
+        ])
+
+    return aggregated_students
